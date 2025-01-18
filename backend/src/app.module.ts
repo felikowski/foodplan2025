@@ -26,6 +26,7 @@ import {RecipeIngredient} from "./recipes/entities/recipe-ingredient.entity";
       TypeOrmModule.forFeature([User, Ingredient, Recipe, RecipeIngredient ]),
       ServeStaticModule.forRoot({
           rootPath: join(__dirname, '..', '..', 'frontend/dist/frontend/browser'),
+          exclude: ['/api*'],
       }),
       RecipesModule,
       IngredientsModule,

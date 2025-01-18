@@ -3,8 +3,9 @@ import { RecipesService } from './recipes.service';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
 
-@Controller('recipes')
+@Controller('api/recipes') // Namespace für API-Endpunkte
 export class RecipesController {
+
   constructor(private readonly recipesService: RecipesService) {}
 
   @Post()

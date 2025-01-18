@@ -1,15 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
+import {Recipe} from "./entities/recipe.entity";
+import {Repository} from "typeorm";
+import {InjectRepository} from "@nestjs/typeorm";
 
 @Injectable()
 export class RecipesService {
+  constructor(
+      @InjectRepository(Recipe)
+      private readonly recipeRepository: Repository<Recipe>, // Repository korrekt injizieren
+  ) {}
   create(createRecipeDto: CreateRecipeDto) {
     return 'This action adds a new recipe';
   }
 
-  findAll() {
-    return `This action returns all recipes`;
+  async findAll(): Promise<Recipe[]> {
+    // Rezepte ohne Relationen laden
+    return this.recipeRepository.find({
+      select: ['id', 'title', 'description', 'instructions'], // Nur gewünschte Felder
+    });
   }
 
   findOne(id: number) {
