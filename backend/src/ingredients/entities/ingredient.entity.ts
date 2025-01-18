@@ -3,12 +3,15 @@ import { RecipeIngredient } from '../../recipes/entities/recipe-ingredient.entit
 
 @Entity()
 export class Ingredient {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    name: string;
+  @Column()
+  name: string;
 
-    @OneToMany(() => RecipeIngredient, (recipeIngredient) => recipeIngredient.ingredient)
-    recipeIngredients: RecipeIngredient[];
+  @OneToMany(
+    () => RecipeIngredient,
+    (recipeIngredient) => recipeIngredient.ingredient,
+  )
+  recipeIngredients: RecipeIngredient[];
 }

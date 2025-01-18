@@ -4,18 +4,22 @@ import { Ingredient } from '../../ingredients/entities/ingredient.entity';
 
 @Entity()
 export class RecipeIngredient {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @ManyToOne(() => Recipe, (recipe) => recipe.recipeIngredients, { onDelete: 'CASCADE' })
-    recipe: Recipe;
+  @ManyToOne(() => Recipe, (recipe) => recipe.recipeIngredients, {
+    onDelete: 'CASCADE',
+  })
+  recipe: Recipe;
 
-    @ManyToOne(() => Ingredient, (ingredient) => ingredient.recipeIngredients, { onDelete: 'CASCADE' })
-    ingredient: Ingredient;
+  @ManyToOne(() => Ingredient, (ingredient) => ingredient.recipeIngredients, {
+    onDelete: 'CASCADE',
+  })
+  ingredient: Ingredient;
 
-    @Column()
-    quantity: number;
+  @Column()
+  quantity: number;
 
-    @Column({ nullable: true })
-    unit: string; // Einheit wie "g", "ml", "Stück"
+  @Column({ nullable: true })
+  unit: string; // Einheit wie "g", "ml", "Stück"
 }
