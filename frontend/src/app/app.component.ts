@@ -6,21 +6,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule], // CommonModule für *ngFor und *ngIf einbinden
-  template: `
-    <h1>Recipe List</h1>
-    <div *ngIf="recipes.length > 0; else loading">
-      <ul>
-        <li *ngFor="let recipe of recipes">
-          <h3>{{ recipe.title }}</h3>
-          <p>{{ recipe.description }}</p>
-          <p><strong>Instructions:</strong> {{ recipe.instructions }}</p>
-        </li>
-      </ul>
-    </div>
-    <ng-template #loading>
-      <p>Loading recipes...</p>
-    </ng-template>
-  `,
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
   recipes: any[] = [];
